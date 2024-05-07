@@ -34,14 +34,12 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
     const token = generateToken(email);
-    console.log("tooooooooooooooken", token);
 
     const myCookies = cookies();
     myCookies.set("user-token", token, {
       httpOnly: true,
       path: "/",
     });
-    console.log("coooooooooooooooookies set");
 
     return NextResponse.json({ result: true, token }, { status: 200 });
   } catch (error) {
