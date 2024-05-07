@@ -10,6 +10,8 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { email, password } = body;
+    console.log("eeeeemail", email, "paaaaaaaass", password);
+
     const validatinBody = registerValidation({ email, password });
     if (validatinBody !== true)
       return NextResponse.json(
@@ -19,12 +21,16 @@ export async function POST(req: NextRequest) {
 
     connectToDb();
     const user = await users.findOne({ email });
+    console.log("uuuuuuuuuuser", user);
+
     if (!user)
       return NextResponse.json(
         { result: false, message: "your email is incorrect" },
         { status: 404 }
       );
     const isCorrectPass = await comparePassword(password, user.password);
+    console.log("iscoreeeeeect", isCorrectPass);
+
     if (!isCorrectPass)
       return NextResponse.json(
         { result: false, message: "your email or password is incorrect" },

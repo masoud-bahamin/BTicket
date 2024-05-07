@@ -20,6 +20,8 @@ function Signin() {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
+    console.log(res);
+
     if (res.status === 200) {
       router.push("/dashboard");
       Swal.fire({
