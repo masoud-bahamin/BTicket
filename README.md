@@ -1,5 +1,7 @@
 # NextJS Bus Ticketing Website
 
+view online <a href="https://bticket.vercel.app/">DEMO<a/>
+
 ## Description
 
 A web application built with NextJS for bus ticketing, featuring user authentication, ticket creation, reservation, and a user dashboard.

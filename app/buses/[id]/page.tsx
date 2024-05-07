@@ -1,5 +1,6 @@
 import SelectedSeat from "@/components/Templates/Bus/SelectSeat";
 import { getUserInfo } from "@/utils/authUser";
+import { redirect } from "next/navigation";
 
 type seatType = {
   id: number;
@@ -11,6 +12,7 @@ type seatType = {
 async function BusTicketInfo({ params }: { params: { id: string } }) {
   const { id } = params;
   const user = await getUserInfo();
+  if (!user) redirect("/signin");
 
   return (
     <div className="container">

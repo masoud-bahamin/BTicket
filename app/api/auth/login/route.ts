@@ -1,6 +1,6 @@
 import { users } from "@/models/user";
 import { connectToDb } from "@/utils/connectToDb";
-import { comparePassword, hashPassword } from "@/utils/hashPassword";
+import { comparePassword } from "@/utils/hashPassword";
 import { generateToken } from "@/utils/jwt";
 import { registerValidation } from "@/validations/server";
 import { cookies } from "next/headers";
@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { email, password } = body;
-    console.log("eeeeemail", email, "paaaaaaaass", password);
 
     const validatinBody = registerValidation({ email, password });
     if (validatinBody !== true)
@@ -21,7 +20,6 @@ export async function POST(req: NextRequest) {
 
     connectToDb();
     const user = await users.findOne({ email });
-    console.log("uuuuuuuuuuser", user);
 
     if (!user)
       return NextResponse.json(
@@ -29,7 +27,6 @@ export async function POST(req: NextRequest) {
         { status: 404 }
       );
     const isCorrectPass = await comparePassword(password, user.password);
-    console.log("iscoreeeeeect", isCorrectPass);
 
     if (!isCorrectPass)
       return NextResponse.json(
@@ -37,11 +34,15 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
     const token = generateToken(email);
+    console.log("tooooooooooooooken", token);
+
     const myCookies = cookies();
     myCookies.set("user-token", token, {
       httpOnly: true,
       path: "/",
     });
+    console.log("coooooooooooooooookies set");
+
     return NextResponse.json({ result: true, token }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ result: false }, { status: 500 });
