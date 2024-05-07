@@ -1,24 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Bus Ticketing Website
 
-## Getting Started
+## Description
 
-First, run the development server:
+A web application built with NextJS for bus ticketing, featuring user authentication, ticket creation, reservation, and a user dashboard.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- User login and registration
+- Email verification
+- Password reset functionality
+- Bus ticket creation
+- Ticket viewing, selection, and reservation
+- User dashboard
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- NextJS
+- React
+- Node.js
+- MongoDB (or your chosen database)
+
+## Installation
+
+1. Clone the repository.
+2. Install dependencies using `npm install` or `yarn install`.
+3. Set up environment variables (refer to `.env.example`).
+4. Start the development server with `npm run dev` or `yarn dev`.
+
+## Usage
+
+Once the server is running, open your browser and navigate to [http://localhost:3000](http://localhost:3000) to access the website.
+
+## Contributing
+
+Contributions are welcome! Please follow our [contribution guidelines](CONTRIBUTING.md) and submit pull requests or report issues.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to [NextJS](https://nextjs.org/) for the awesome framework.
+- Special thanks to [XYZ Library](https://xyz.com/) for XYZ functionality.
+
+## Contact
+
+For questions or feedback, contact me at [your_email@example.com](mailto:your_email@example.com) or [GitHub](https://github.com/your_username).
 
 ## Learn More
 
