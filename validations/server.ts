@@ -8,3 +8,8 @@ const registerServerSchema = {
 };
 
 export const registerValidation = v.compile(registerServerSchema);
+
+export const messageFormValidation = v.compile({
+  email: { type: "email", min: 5, requierd: true },
+  message: { type: "string", min: 5, requierd: true },
+});

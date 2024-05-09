@@ -1,20 +1,41 @@
-import CreateTicket from "@/components/Templates/Bus/CreateTicket";
+import { reserved } from "@/models/reserved";
 import { getUserInfo } from "@/utils/authUser";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+export interface TicketType {
+  seat: {}[];
+  _id: string;
+  createdAt: Date;
+  busId: {
+    title: string;
+    price: number;
+  };
+}
+
 async function Dashboard() {
   const user = await getUserInfo();
+  const tickets: TicketType[] = await reserved
+    .find({ userId: user?._id })
+    .populate("busId")
+    .lean();
+
   return (
     <div className="fixed top-0 flex min-h-screen w-full">
       {/* aside */}
       <div className="w-[350px] bg-main-text text-white">
-        <div className="px-6 py-6 mb-6">
-          <img
-            src="https://admin.pixelstrap.net/mofi/assets/images/logo/logo_light.png"
+        <Link href={"/"} className="flex gap-3 px-6 py-6 mb-6">
+          <Image
+            className="rounded-full"
+            width={60}
+            height={60}
+            quality={100}
+            src="/img/bu.jpg"
             alt=""
           />
-        </div>
+          <h2 className="font-bold text-2xl font-Poetsen-Onem">B Ticket</h2>
+        </Link>
         <div>
           <Link
             href={"/dashboard"}
@@ -121,8 +142,8 @@ async function Dashboard() {
         {/* header */}
         <header className="bg-white py-4 px-8 flex justify-between items-center">
           <div>
-            <p>Dashboard</p>
-            <p>Home / Dashboard</p>
+            <p className="font-semibold">Dashboard</p>
+            <p className="text-sm">Home / Dashboard</p>
           </div>
           <div className="min-w-80">
             <div className="flex gap-3 bg-light-bg py-3 px-6 items-center rounded-lg">
@@ -140,26 +161,19 @@ async function Dashboard() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="bg-light-bg rounded-full text-primary p-3">
-              <svg
-                viewBox="0 0 21 21"
-                fill="currentColor"
-                height="1.4em"
-                width="1.4em"
-              >
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10.5 2.5a3 3 0 013 3v2a3 3 0 11-6 0v-2a3 3 0 013-3zm7 14v-.728c0-3.187-3.686-5.272-7-5.272s-7 2.085-7 5.272v.728a1 1 0 001 1h12a1 1 0 001-1z"
-                />
-              </svg>
+            <div className="bg-light-bg rounded-full">
+              <Image
+                src={"/img/profile.jpeg"}
+                width={50}
+                height={50}
+                alt="profil"
+                className="rounded-full"
+              />
             </div>
             <div>
-              <p className="font-semibold text-sm">{user.email}</p>
+              <p className="font-semibold text-sm">{user?.email}</p>
               <p className=" opacity-60">
-                {user.isVerifyEmail ? "verified" : "unverified"}
+                {user?.isVerifyEmail ? "verified" : "unverified"}
               </p>
             </div>
           </div>
@@ -182,73 +196,47 @@ async function Dashboard() {
                   <th className="pb-2">Title</th>
                   <th className="pb-2">Price</th>
                   <th className="pb-2">Date</th>
-                  <th className="pb-2 text-center">Action</th>
+                  <th className="pb-2 text-center">Seats</th>
                 </tr>
               </thead>
               <tbody className="text-sm">
-                <tr>
-                  <td className="font-semibold py-2 w-10">
-                    <input type="checkbox" name="" id="" />
-                  </td>
-                  <td className="font-semibold py-2 flex items-center gap-2">
-                    <div className=" size-8 bg-gradient-to-t from-primary to-body-text rounded"></div>
-                    VIP BUS
-                  </td>
-                  <td>430 $</td>
-                  <td>12/05/2024</td>
-                  <td className="text-center text-2xl pb-3">...</td>
-                </tr>
-                <tr>
-                  <td className="font-semibold py-2 w-10">
-                    <input type="checkbox" name="" id="" />
-                  </td>
-                  <td className="font-semibold py-2 flex items-center gap-2">
-                    <div className=" size-8 bg-gradient-to-t from-rose-300 to-body-text rounded"></div>
-                    VIP
-                  </td>
-                  <td>550 $</td>
-                  <td>10/05/2024</td>
-                  <td className="text-center text-2xl pb-3">...</td>
-                </tr>
-                <tr>
-                  <td className="font-semibold py-2 w-10">
-                    <input type="checkbox" name="" id="" />
-                  </td>
-                  <td className="font-semibold py-2 flex items-center gap-2">
-                    <div className=" size-8 bg-gradient-to-t from-primary to-body-text rounded"></div>
-                    VIP BUS
-                  </td>
-                  <td>490 $</td>
-                  <td>08/05/2024</td>
-                  <td className="text-center text-2xl pb-3">...</td>
-                </tr>
-                <tr>
-                  <td className="font-semibold py-2 w-10">
-                    <input type="checkbox" name="" id="" />
-                  </td>
-                  <td className="font-semibold py-2 flex items-center gap-2">
-                    <div className=" size-8 bg-gradient-to-t from-blue-400 to-gray-600 rounded"></div>
-                    BUS
-                  </td>
-                  <td>600 $</td>
-                  <td>05/05/2024</td>
-                  <td className="text-center text-2xl pb-3">...</td>
-                </tr>
-                <tr>
-                  <td className="font-semibold py-2 w-10">
-                    <input type="checkbox" name="" id="" />
-                  </td>
-                  <td className="font-semibold py-2 flex items-center gap-2">
-                    <div className=" size-8 bg-gradient-to-t from-blue-400 to-body-text rounded"></div>
-                    VIP BUS
-                  </td>
-                  <td>440 $</td>
-                  <td>03/05/2024</td>
-                  <td className="text-center text-2xl pb-3">...</td>
-                </tr>
+                {tickets.map((ticket) => (
+                  <tr key={ticket._id}>
+                    <td className="font-semibold py-2 w-10">
+                      <input type="checkbox" name="" id="" />
+                    </td>
+                    <td className="font-semibold py-2 flex items-center gap-2">
+                      <div className="rounded">
+                        <Image
+                          src={"/img/b1.png"}
+                          alt="brand"
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                      {ticket.busId.title}
+                    </td>
+                    <td>{ticket.busId.price} $</td>
+                    <td>{ticket.createdAt.toDateString().slice(0, 30)}</td>
+                    <td className="text-center pb-3 flex gap-3 justify-center text-xs">
+                      {ticket.seat?.map((i: any) => (
+                        <span key={i} className="flex">
+                          {i}
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            height="1em"
+                            width="1em"
+                          >
+                            <path d="M7 18S4 10 4 6s2-4 2-4h1s1 0 1 1-1 1-1 3 3 4 3 7-3 5-3 5m5-1c-1 0-4 2.5-4 2.5-.3.2-.2.5 0 .8 0 0 1 1.8 3 1.8h6c1.1 0 2-.9 2-2v-1c0-1.1-.9-2-2-2h-5z" />
+                          </svg>
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
-            {/* <CreateTicket /> */}
           </div>
           <div className="w-1/3 bg-white p-8 rounded-lg min-h-[400px]">
             <div className="flex justify-between items-center mb-6">

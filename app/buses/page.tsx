@@ -26,7 +26,9 @@ async function Bus() {
 
   return (
     <div className="bg-main-bg">
-      <div className="bg-body-text">{/* <SearchSection /> */}</div>
+      <div className="bg-body-text">
+        <SearchSection from="Type" to="Type" />
+      </div>
       <div className="container py-12">
         {busTickets.map((ticket) => (
           <BusTicket key={ticket._id} {...ticket} />

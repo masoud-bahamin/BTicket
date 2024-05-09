@@ -1,6 +1,7 @@
 import { getUserInfo } from "@/utils/authUser";
 import Link from "next/link";
 import Colors from "./ShowColors";
+import Image from "next/image";
 
 async function Header() {
   const user = await getUserInfo();
@@ -21,7 +22,7 @@ async function Header() {
           </div>
           <nav className="flex gap-4">
             <Link
-              href={"/"}
+              href={"/buses"}
               className="flex gap-2 items-center py-2 px-8 border border-body-text rounded-full hover:border-main-text hover:text-primary"
             >
               <svg
@@ -86,10 +87,16 @@ async function Header() {
               <p>
                 <Link
                   title="Dashboard"
-                  className="pr-3 hover:text-primary"
+                  className="pr-3 hover:text-primary flex items-center "
                   href={"/dashboard"}
                 >
-                  {user.email.slice(0, 6)}
+                  <Image
+                    src={"/img/profile.jpeg"}
+                    width={40}
+                    height={40}
+                    alt="profil"
+                    className="rounded-full"
+                  />
                 </Link>{" "}
               </p>
             ) : (
@@ -113,9 +120,9 @@ async function Header() {
               </Link>
             )}
             <Link
-              title="help"
+              title="contact"
               className="pl-4 hover:text-primary"
-              href={"/help"}
+              href={"/contact"}
             >
               <svg
                 viewBox="0 0 24 24"

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const Reserved = require("./reserved");
 
 const schema = new mongoose.Schema(
   {
@@ -32,5 +33,11 @@ const schema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+schema.virtual("tickets", {
+  ref: "Reserved",
+  localField: "_id",
+  foreignField: "userId",
+});
 
 export const users = mongoose.models.User || mongoose.model("User", schema);

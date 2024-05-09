@@ -1,9 +1,15 @@
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 import Swal from "sweetalert2";
 import { connectToDb } from "./connectToDb";
 import { verifyToken } from "./jwt";
 import { users } from "@/models/user";
+
+export interface UserType {
+  email: string;
+  tickets: { seat: string[]; _id: string }[];
+  isVerifyEmail: boolean;
+  _id: string;
+}
 
 export const getUserInfo = async () => {
   const myCookies = cookies();
@@ -15,12 +21,15 @@ export const getUserInfo = async () => {
       text: "plaese sign in",
     });
 
-    return false;
+    return;
   }
 
   connectToDb();
   const email = verifyToken(token);
-  const user = await users.findOne({ email });
-  if (!user) return false;
+  const user: UserType | null = await users
+    .findOne({ email })
+    .populate("tickets")
+    .lean();
+  if (!user) return;
   return user;
 };
