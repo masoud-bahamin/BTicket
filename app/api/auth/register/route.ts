@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
     myCookies.set("user-token", token, {
       httpOnly: true,
       path: "/",
+      maxAge: 60 * 60 * 24 * 7,
     });
     return NextResponse.json({ result: true, token }, { status: 201 });
   } catch (error) {

@@ -9,6 +9,8 @@ export interface UserType {
   tickets: { seat: string[]; _id: string }[];
   isVerifyEmail: boolean;
   _id: string;
+  verifyEmailCode: number;
+  verifyEmailTime: number;
 }
 
 export const getUserInfo = async () => {

@@ -9,7 +9,9 @@ export async function POST(req: NextRequest) {
     const date = new Date();
     const time = date.getTime();
     connectToDb();
-    const { verifyEmailCode, verifyEmailTime, email } = await getUserInfo();
+    const userInfo = await getUserInfo();
+    if (!userInfo) return NextResponse.json({ result: false }, { status: 403 });
+    const { verifyEmailCode, verifyEmailTime, email } = userInfo;
     if (verifyEmailCode === body.verifyEmailCode && verifyEmailTime >= time) {
       const user = await users.findOneAndUpdate(
         { email },
