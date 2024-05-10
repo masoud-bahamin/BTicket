@@ -13,10 +13,10 @@ function MainSearch() {
         e.preventDefault();
         router.push(`/search/${from || "location"}/${to || "location"}`);
       }}
-      className="mx-auto p-5 rounded-lg bg-main-bg flex gap-5 w-fit"
+      className="mx-auto p-5 rounded-lg bg-main-bg flex flex-wrap lg:flex-nowrap gap-5 w-fit text-sm md:text-base"
     >
-      <div className="flex items-center">
-        <div className="px-4 py-2 rounded-lg min-w-80 bg-light-bg">
+      <div className="flex flex-wrap md:flex-nowrap items-center gap-2">
+        <div className="px-4 py-2 rounded-lg min-w-72 bg-light-bg">
           <label className="block text-sm" htmlFor="">
             From
           </label>
@@ -28,7 +28,7 @@ function MainSearch() {
             onChange={(e) => setFrom(e.target.value)}
           />
         </div>
-        <div className="border rounded-full border-body-text p-2.5 bg-white -ml-2 -mr-2 z-10 cursor-pointer">
+        <div className="border rounded-full border-body-text p-1.5 md:p-2.5 bg-white -ml-4 -mr-4 z-10 cursor-pointer">
           <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
             <path
               fillRule="evenodd"
@@ -36,7 +36,7 @@ function MainSearch() {
             />
           </svg>
         </div>
-        <div className="px-4 py-2 rounded-lg min-w-80 bg-light-bg">
+        <div className="px-4 py-2 rounded-lg min-w-72 bg-light-bg">
           <label className="block text-sm" htmlFor="">
             To
           </label>
@@ -49,9 +49,9 @@ function MainSearch() {
           />
         </div>
       </div>
-      <div className="bg-light-bg px-4 max-w-40 py-2 rounded-lg">
+      <div className="bg-light-bg px-4 max-w-56 py-2 rounded-lg">
         <p className="text-sm">Depart</p>
-        <p className="font-semibold">Thu, 16 May, Sat</p>
+        <p className="font-semibold line-clamp-1">Thu, 16 May, Sat</p>
       </div>
       <div className="px-4 py-2 rounded-lg flex flex-col justify-center gap-2">
         <div className="flex items-center">
@@ -67,7 +67,10 @@ function MainSearch() {
           </label>
         </div>
       </div>
-      <button type="submit" className="px-4 rounded-lg bg-primary text-white">
+      <button
+        type="submit"
+        className="px-4 py-2 rounded-lg bg-primary text-white"
+      >
         Search
       </button>
     </form>

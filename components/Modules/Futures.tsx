@@ -2,7 +2,7 @@ import React from "react";
 
 function Futures() {
   return (
-    <div className="bg-main-bg p-6 grid grid-cols-4 gap-5 rounded-lg">
+    <div className="bg-main-bg p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 rounded-lg">
       <div className="bg-white py-4 px-6 rounded-lg text-center shadow-md">
         <svg
           className="mb-4 mx-auto"

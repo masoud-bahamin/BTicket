@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function Colors() {
   const [showColors, setShowColors] = useState(false);
   return (
-    <div>
+    <div className="hidden lg:block">
       <button
         onClick={() => setShowColors((p) => !p)}
         className="fixed top-3 right-3"
