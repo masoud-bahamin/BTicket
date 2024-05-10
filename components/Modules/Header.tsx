@@ -19,7 +19,7 @@ async function Header() {
               B TICKET
             </Link>
           </div>
-          {/* <Navbar email={user?.email} /> */}
+          <Navbar email={user ? true : false} />
         </div>
       </div>
     </>

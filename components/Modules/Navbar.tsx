@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-function Navbar({ email }: { email: string | undefined }) {
+function Navbar({ email }: { email: boolean }) {
   const [isShowMenu, setIsShowMenu] = useState(false);
   return (
     <div className="lg:w-[70%] flex items-center">
