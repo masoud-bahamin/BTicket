@@ -9,9 +9,20 @@ function Navbar({ email }: { email: boolean }) {
   return (
     <div className="lg:w-[70%] flex items-center">
       <button onClick={() => setIsShowMenu((p) => !p)} className="md:hidden">
-        <svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em">
-          <path d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z" />
-        </svg>
+        {isShowMenu ? (
+          <svg
+            viewBox="0 0 512 512"
+            fill="currentColor"
+            height="1em"
+            width="1em"
+          >
+            <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="currentColor" height="1em" width="1em">
+            <path d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z" />
+          </svg>
+        )}
       </button>
       <div
         className={` ${

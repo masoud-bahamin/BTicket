@@ -21,8 +21,8 @@ function ContactForm() {
   }, [state]);
 
   return (
-    <div className="p-8 border rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 border-b border-primary pb-2">
+    <div className="sm:p-8 sm:border mx-auto sm:mx-0 rounded-lg">
+      <h2 className="text-xl md:text-2xl font-bold mb-6 border-b border-primary pb-2">
         Contact Form
       </h2>
       <form action={formAction}>
@@ -35,7 +35,7 @@ function ContactForm() {
         })}
         <label htmlFor="email">Your Email</label>
         <input
-          className=" block p-2 border rounded-lg min-w-96 mb-5"
+          className=" block p-2 border rounded-lg min-w-80 md:min-w-96 mb-5"
           type="text"
           placeholder="Email"
           name="email"
@@ -49,7 +49,7 @@ function ContactForm() {
         })}
         <label htmlFor="message">Your Message</label>
         <textarea
-          className=" block p-2 border rounded-lg min-w-96 mb-5"
+          className=" block p-2 border rounded-lg min-w-80 md:min-w-96 mb-5"
           placeholder="Message"
           name="message"
         />

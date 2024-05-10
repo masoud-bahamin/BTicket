@@ -39,7 +39,7 @@ function Signin() {
   };
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
-      <div className=" bg-gradient-to-t from-main-text to-body-text rounded-lg p-20 text-white">
+      <div className=" bg-gradient-to-t from-main-text to-body-text rounded-lg p-10 sm:p-20 text-white">
         <h2 className="text-center text-3xl mb-6">SIGN IN</h2>
         <Formik
           onSubmit={(values) => loginUser(values)}

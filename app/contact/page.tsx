@@ -4,9 +4,9 @@ function Contact() {
   return (
     <div>
       <div className="bg-body-text text-white">
-        <div className="container flex justify-between py-20">
+        <div className="container flex flex-wrap gap-4 justify-between py-8 lg:py-20">
           <div>
-            <h2 className="text-3xl font-bold mb-5">Contact Us</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-5">Contact Us</h2>
             <p className="max-w-96">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
               tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
@@ -15,18 +15,18 @@ function Contact() {
           <p>Home / Contact Us</p>
         </div>
       </div>
-      <div className="container flex gap-16 py-12 min-h-[70vh]">
+      <div className="container flex flex-wrap gap-16 py-12 min-h-[70vh]">
         <ContactForm />
         <div>
           <p className="text-primary mb-5"> Contact Us</p>
-          <h2 className="text-3xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-xl md:text-3xl font-bold mb-4">Get In Touch</h2>
           <p className="text-body-text max-w-96 mb-5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempo incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip
           </p>
-          <div className="grid grid-cols-2 gap-y-10 gap-x-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10 gap-x-20">
             <div className="flex gap-2 items-center">
               <div className="bg-primary p-4 rounded-lg text-white">
                 <svg
@@ -43,7 +43,7 @@ function Contact() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Denpasar</h3>
+                <h3 className="text-lg md:text-2xl font-bold">Denpasar</h3>
                 <p className="max-w-40">Jl. Raya Puputan No 142, Denpasar</p>
               </div>
             </div>
@@ -60,7 +60,7 @@ function Contact() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Bandung</h3>
+                <h3 className="text-lg md:text-2xl font-bold">Bandung</h3>
                 <p className="max-w-40">Jl. Raya Puputan No 815, Kuta</p>
               </div>
             </div>
@@ -76,7 +76,7 @@ function Contact() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Call Us</h3>
+                <h3 className="text-lg md:text-2xl font-bold">Call Us</h3>
                 <p className="max-w-40">(+90) 535 484 3540</p>
               </div>
             </div>
@@ -92,7 +92,9 @@ function Contact() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-2xl font-bold">Email Information</h3>
+                <h3 className="text-lg md:text-2xl font-bold">
+                  Email Information
+                </h3>
                 <p className="max-w-40">bahaminwp@gmail.com</p>
               </div>
             </div>

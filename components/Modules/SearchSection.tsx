@@ -18,9 +18,9 @@ function SearchSection({
         e.preventDefault();
         router.push(`/search/${from || "location"}/${to || "location"}`);
       }}
-      className="mx-auto p-5 rounded-md flex gap-5 w-fit"
+      className="mx-auto p-5 rounded-md flex flex-wrap gap-2 md:gap-5 w-fit"
     >
-      <div className="flex items-center text-white">
+      <div className="flex flex-wrap gap-2 items-center text-white">
         <div className="px-4 py-1 text-sm rounded-md min-w-64 bg-main-text text-white">
           <input
             className=" bg-transparent py-1 font-semibold outline-none text-white placeholder:text-white placeholder:font-semibold"
@@ -59,7 +59,7 @@ function SearchSection({
 
       <button
         type="submit"
-        className="px-12 rounded-md bg-main-text text-white text-sm font-semibold"
+        className="px-12 py-2 rounded-md bg-main-text text-white text-sm font-semibold"
       >
         Search
       </button>

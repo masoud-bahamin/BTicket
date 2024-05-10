@@ -14,9 +14,10 @@ function BusTicket({
 }: BusTicketType) {
   return (
     <>
-      <div className="bg-white flex justify-between shadow-md p-5 rounded-t-lg border-b">
+      <div className="bg-white flex flex-wrap gap-5 justify-between shadow-md p-5 rounded-t-lg border-b">
         <div>
           <img
+            className="w-24 md:w-32"
             width={150}
             src="https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/4889-sm.png"
             alt=""
