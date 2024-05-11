@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Templates/Dashboard/Sidebar";
 import { reserved } from "@/models/reserved";
 import { getUserInfo } from "@/utils/authUser";
 import Image from "next/image";
@@ -22,131 +23,19 @@ async function Dashboard() {
     .lean();
 
   return (
-    <div className="fixed top-0 flex min-h-screen w-full">
+    <div className="fixed z-30 top-0 flex h-screen w-full overflow-x-hidden">
       {/* aside */}
-      <div className="w-[350px] bg-main-text text-white">
-        <Link href={"/"} className="flex gap-3 px-6 py-6 mb-6">
-          <Image
-            className="rounded-full"
-            width={60}
-            height={60}
-            quality={100}
-            src="/img/bu.jpg"
-            alt=""
-          />
-          <h2 className="font-bold text-2xl font-Poetsen-Onem">B Ticket</h2>
-        </Link>
-        <div>
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2 px-6 py-3 font-semibold hover:bg-body-text"
-          >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              height="1.2em"
-              width="1.2em"
-            >
-              <path d="M2 4a2 2 0 012-2h6a2 2 0 012 2v11.5a.5.5 0 01-.777.416L7 13.101l-4.223 2.815A.5.5 0 012 15.5V4zm2-1a1 1 0 00-1 1v10.566l3.723-2.482a.5.5 0 01.554 0L11 14.566V4a1 1 0 00-1-1H4z" />
-              <path d="M4.268 1H12a1 1 0 011 1v11.768l.223.148A.5.5 0 0014 13.5V2a2 2 0 00-2-2H6a2 2 0 00-1.732 1z" />
-            </svg>{" "}
-            <span>Bookmarks</span>
-          </Link>
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2 px-6 py-3 font-semibold hover:bg-body-text"
-          >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              height="1.2em"
-              width="1.2em"
-            >
-              <path d="M11 6.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1zm-3 0a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1zm-5 3a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1zm3 0a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1z" />
-              <path d="M3.5 0a.5.5 0 01.5.5V1h8V.5a.5.5 0 011 0V1h1a2 2 0 012 2v11a2 2 0 01-2 2H2a2 2 0 01-2-2V3a2 2 0 012-2h1V.5a.5.5 0 01.5-.5zM1 4v10a1 1 0 001 1h12a1 1 0 001-1V4H1z" />
-            </svg>
-            <span>Calendar</span>
-          </Link>
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2 px-6 py-3 font-semibold hover:bg-body-text"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-              height="1.2em"
-              width="1.2em"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" />
-              <path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v3a2 2 0 000 4v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3a2 2 0 000-4V7a2 2 0 012-2" />
-            </svg>
-            <span>Tickets</span>
-          </Link>
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2 px-6 py-3 font-semibold hover:bg-body-text"
-          >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              height="1.2em"
-              width="1.2em"
-            >
-              <path d="M2 4a2 2 0 012-2h6a2 2 0 012 2v11.5a.5.5 0 01-.777.416L7 13.101l-4.223 2.815A.5.5 0 012 15.5V4zm2-1a1 1 0 00-1 1v10.566l3.723-2.482a.5.5 0 01.554 0L11 14.566V4a1 1 0 00-1-1H4z" />
-              <path d="M4.268 1H12a1 1 0 011 1v11.768l.223.148A.5.5 0 0014 13.5V2a2 2 0 00-2-2H6a2 2 0 00-1.732 1z" />
-            </svg>{" "}
-            <span>Bookmarks</span>
-          </Link>
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2 px-6 py-3 font-semibold hover:bg-body-text"
-          >
-            <svg
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              height="1.2em"
-              width="1.2em"
-            >
-              <path d="M11 6.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1zm-3 0a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1zm-5 3a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1zm3 0a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1z" />
-              <path d="M3.5 0a.5.5 0 01.5.5V1h8V.5a.5.5 0 011 0V1h1a2 2 0 012 2v11a2 2 0 01-2 2H2a2 2 0 01-2-2V3a2 2 0 012-2h1V.5a.5.5 0 01.5-.5zM1 4v10a1 1 0 001 1h12a1 1 0 001-1V4H1z" />
-            </svg>
-            <span>Calendar</span>
-          </Link>
-          <Link
-            href={"/dashboard"}
-            className="flex items-center gap-2 px-6 py-3 font-semibold hover:bg-body-text"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-              height="1.2em"
-              width="1.2em"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" />
-              <path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v3a2 2 0 000 4v3a2 2 0 01-2 2H5a2 2 0 01-2-2v-3a2 2 0 000-4V7a2 2 0 012-2" />
-            </svg>
-            <span>Tickets</span>
-          </Link>
-        </div>
-      </div>
+      <Sidebar />
       {/* main */}
-      <div className=" w-full bg-main-bg">
+      <div className=" w-full bg-main-bg overflow-y-scroll">
         {/* header */}
-        <header className="bg-white py-4 px-8 flex justify-between items-center">
+        <header className="bg-white sticky top-0 py-4 px-8 flex-col-reverse flex md:flex-row flex-wrap justify-between gap-y-2 md:items-center">
           <div>
-            <p className="font-semibold">Dashboard</p>
+            <p className="hidden md:block font-semibold">Dashboard</p>
             <p className="text-sm">Home / Dashboard</p>
           </div>
           <div className="min-w-80">
-            <div className="flex gap-3 bg-light-bg py-3 px-6 items-center rounded-lg">
+            <div className="hidden md:flex gap-3 bg-light-bg py-3 px-6 items-center rounded-lg">
               <svg fill="none" viewBox="0 0 15 15" height="1.2em" width="1.2em">
                 <path
                   stroke="currentColor"
@@ -178,8 +67,8 @@ async function Dashboard() {
             </div>
           </div>
         </header>
-        <div className="flex gap-8 p-8">
-          <div className="w-2/3 bg-white p-8 rounded-lg min-h-[400px]">
+        <div className="flex flex-wrap md:flex-nowrap gap-8 md:p-8">
+          <div className="md:w-2/3 bg-white p-8 rounded-lg md:min-h-[400px] overflow-x-scroll md:overflow-x-hidden">
             <div className="flex justify-between mb-6">
               <span className=" font-bold text-2xl">Tickets</span>
               <span>
@@ -187,7 +76,7 @@ async function Dashboard() {
                 <input className="p-1 border rounded-lg" type="text" />
               </span>
             </div>
-            <table className="w-full">
+            <table className="min-w-[450px] w-full">
               <thead>
                 <tr className="text-left font-bold border-b border-dashed">
                   <th className="pb-2 w-10">
@@ -238,7 +127,7 @@ async function Dashboard() {
               </tbody>
             </table>
           </div>
-          <div className="w-1/3 bg-white p-8 rounded-lg min-h-[400px]">
+          <div className="w-full md:w-1/3 bg-white p-8 rounded-lg min-h-[400px]">
             <div className="flex justify-between items-center mb-6">
               <span className=" font-bold text-2xl">Notifications</span>
               <span className="text-2xl">...</span>
