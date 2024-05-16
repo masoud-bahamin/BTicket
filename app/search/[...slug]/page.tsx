@@ -2,6 +2,7 @@ import BusTicket from "@/components/Modules/BusTicket";
 import SearchSection from "@/components/Modules/SearchSection";
 
 import { buses } from "@/models/bus";
+import { connectToDb } from "@/utils/connectToDb";
 import React from "react";
 
 export interface BusTicketType {
@@ -19,6 +20,7 @@ export interface BusTicketType {
 }
 
 async function SearchBus({ params }: { params: { slug: string[] } }) {
+  connectToDb();
   const busTickets: BusTicketType[] = await buses
     .find({ from: params.slug[0], to: params.slug[1] }, "-__v")
     .populate("reserved")

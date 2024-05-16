@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Dosis } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Modules/Header";
+import Footer from "@/components/Modules/Footer";
 
 const inter = Dosis({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={" font-Dosis"}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
