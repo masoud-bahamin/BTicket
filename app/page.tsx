@@ -63,7 +63,7 @@ export default function Home() {
           More than 10 useful and engaging features available only for app
           users.
         </h3>
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className=" bg-[url(/img/b12.jpg)] bg-cover rounded">
             <div className="bg-[rgba(58,58,58,0.36)] p-16 h-[30rem]">
               <h3 className="text-4xl text-white mb-8 font-bold">
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-main-bg my-12">
-        <div className="container py-20 grid grid-cols-2 gap-12">
+        <div className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
             <h3 className="text-3xl font-bold mb-6">
               What our customers are saying us?
@@ -113,10 +113,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="container my-12">
+      <div className="container">
         <h3 className="text-4xl mb-4 font-Poetsen-One">Recommended</h3>
         <p className="mb-8">Interdum et malesuada fames ac ante ipsum</p>
-        <div className="grid grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div>
               <Image
