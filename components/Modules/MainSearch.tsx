@@ -28,13 +28,13 @@ function MainSearch() {
             onChange={(e) => setFrom(e.target.value)}
           />
         </div>
-        <div className="border rounded-full border-body-text p-1.5 md:p-2.5 bg-white -ml-4 -mr-4 cursor-pointer">
+        <div className="border rounded-full border-body-text p-1.5 md:p-2.5 bg-white md:z-10 -ml-4 -mr-4 cursor-pointer">
           <svg
             fill="currentColor"
             viewBox="0 0 16 16"
             height="1em"
             width="1em"
-            className="z-0"
+            className="z-10"
           >
             <path
               fillRule="evenodd"

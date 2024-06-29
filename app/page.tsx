@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="bg-white">
-      <div className="bg-[url(/img/baner.jpg)] bg-cover bg-bottom">
+      <div className="bg-[url(/img/baner.jpg)] bg-cover bg-bottom md:-mt-24">
         <div className=" bg-[rgba(100,43,40,0.75)] pt-8 pb-16">
           <div className="container md:pt-32">
             <MainSearch />

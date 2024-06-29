@@ -4,6 +4,7 @@ import { signupValidationSchema } from "@/validations/client";
 import { Field, Form, Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { emit } from "process";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -17,7 +18,10 @@ function Signup() {
     try {
       const res = await fetch("/api/auth/register", {
         method: "POST",
-        body: JSON.stringify(formValues),
+        body: JSON.stringify({
+          email: formValues.email.toLowerCase(),
+          password: formValues.password,
+        }),
       });
       console.log(res);
       if (res.status === 201) {

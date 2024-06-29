@@ -28,6 +28,7 @@ function Navbar({ email }: { email: boolean }) {
         )}
       </button>
       <div
+        onClick={() => setIsShowMenu(false)}
         className={` ${
           isShowMenu ? "left-0" : "-left-[1000px]"
         } z-30 min-w-full absolute top-16 p-6 md:p-0 bg-main-bg md:bg-transparent md:static flex flex-col h-80 md:h-fit md:flex-row justify-between md:items-center transition-all duration-500`}
