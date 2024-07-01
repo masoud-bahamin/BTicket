@@ -24,7 +24,7 @@ export default function HeroSection() {
         <div className=" relative">
           <Image
             className="w-80 sm:w-auto h-auto"
-            src={"/img/t1.png"}
+            src={"/img/T1.png"}
             alt="Bticket"
             width={765}
             height={764}
