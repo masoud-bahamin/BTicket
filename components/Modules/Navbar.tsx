@@ -7,10 +7,10 @@ import React, { useState } from "react";
 function Navbar({ email }: { email: boolean }) {
   const [isShowMenu, setIsShowMenu] = useState(false);
   return (
-    <div className="lg:w-[70%] flex items-center  md:text-main-text">
+    <div className=" lg:w-[70%] flex items-center  md:text-main-text">
       <button
         onClick={() => setIsShowMenu((p) => !p)}
-        className="md:hidden text-main-bg"
+        className="md:hidden text-main-text"
       >
         {isShowMenu ? (
           <svg
@@ -31,12 +31,12 @@ function Navbar({ email }: { email: boolean }) {
         onClick={() => setIsShowMenu(false)}
         className={` ${
           isShowMenu ? "left-0" : "-left-[1000px]"
-        } z-30 min-w-full absolute top-16 p-6 md:p-0 bg-main-bg md:bg-transparent md:static flex flex-col h-80 md:h-fit md:flex-row justify-between md:items-center transition-all duration-500`}
+        } z-50 min-w-full absolute top-16 p-6 md:p-0 bg-white md:bg-transparent md:static flex flex-col h-80 md:h-fit md:flex-row justify-between md:items-center transition-all duration-500`}
       >
         <nav className="flex flex-col md:flex-row gap-4 md:gap-0">
           <Link
             href={"/buses"}
-            className="flex gap-2 items-center py-2 px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
+            className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg
               viewBox="0 0 512 512"
@@ -50,7 +50,7 @@ function Navbar({ email }: { email: boolean }) {
           </Link>
           <Link
             href={"/"}
-            className="flex gap-2 items-center py-2 px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
+            className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg
               viewBox="0 0 1002.777 1000"
@@ -64,7 +64,7 @@ function Navbar({ email }: { email: boolean }) {
           </Link>
           <Link
             href={"/"}
-            className="flex gap-2 items-center py-2 px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
+            className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg
               fill="currentColor"
@@ -81,7 +81,7 @@ function Navbar({ email }: { email: boolean }) {
           </Link>
           <Link
             href={"/"}
-            className="flex gap-2 items-center py-2 px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
+            className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg fill="none" viewBox="0 0 15 15" height="1em" width="1em">
               <path

@@ -9,7 +9,7 @@ async function Header() {
   return (
     <>
       {/* <Colors /> */}
-      <div className="sticky top-0  ">
+      <div className="md:sticky top-0  ">
         <div className="container flex justify-between items-center py-5">
           <div>
             <Link

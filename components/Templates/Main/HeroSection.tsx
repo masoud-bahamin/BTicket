@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <div>
       <div className="absolute top-0 right-0 bg-[url(/img/bg1.png)] bg-no-repeat -z-50 w-80 h-96 xl:w-[700px] xl:h-[670px]"></div>
-      <div className=" container py-10 flex flex-col-reverse sm:flex-row">
+      <div className="container py-10 flex flex-col-reverse sm:flex-row">
         <div className="max-w-[550px]">
           <p className="text-primary font-bold text-xl mb-6 font-Poetsen-One">
             Best Destinations around the world
@@ -21,7 +21,7 @@ export default function HeroSection() {
           </p>
           <MainSearch />
         </div>
-        <div className=" relative">
+        <div className="relative">
           <Image
             className="w-80 sm:w-auto h-auto"
             src={"/img/T1.png"}
