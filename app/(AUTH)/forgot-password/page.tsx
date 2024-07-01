@@ -6,35 +6,46 @@ import Swal from "sweetalert2";
 
 function Forgot() {
   const [email, setEmail] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch("/api/auth/forgot-password", {
-      method: "POST",
-      body: JSON.stringify({ email }),
-    });
-    console.log(res);
-    if (res.status === 200) {
-      const data = await res.json();
-      Swal.fire({
-        titleText: "Your email send successfully",
-        text: "Go to reset-password Page",
-        confirmButtonText: "Yes",
-        cancelButtonText: "Cancel",
-        showCancelButton: true,
-      }).then((res) => {
-        setEmail("");
-        if (res.isConfirmed) {
-          router.push(`/reset-password/${data.link}`);
-        }
+    if (loading || email.length < 5) return false;
+    try {
+      setLoading(true);
+      const res = await fetch("/api/auth/forgot-password", {
+        method: "POST",
+        body: JSON.stringify({ email }),
       });
-    } else {
+
+      const data = await res.json();
+      if (res.status === 200) {
+        Swal.fire({
+          titleText: "Your email send successfully",
+          text: "Go to reset-password Page",
+          confirmButtonText: "Yes",
+          cancelButtonText: "Cancel",
+          showCancelButton: true,
+        }).then((res) => {
+          setEmail("");
+          if (res.isConfirmed) {
+            router.push(`/reset-password/${data.link}`);
+          }
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: data.error,
+        });
+      }
+    } catch (error) {
       Swal.fire({
         icon: "error",
-        text: "please try again",
+        text: "catch error ,please try again",
       });
+      console.log(error);
     }
+    setLoading(false);
   };
 
   return (
@@ -48,7 +59,7 @@ function Forgot() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Please Type Your Email..."
             className="border p-2 w-full rounded-lg mb-6"
-            type="text"
+            type="email"
             name=""
             id=""
           />
@@ -56,7 +67,7 @@ function Forgot() {
             type="submit"
             className="w-full bg-primary text-white rounded-lg hover:bg-secondary py-2 "
           >
-            SEND
+            {loading ? "LOADING..." : "SEND"}
           </button>
         </form>
       </div>

@@ -39,8 +39,9 @@ function Futures() {
 
         <h4 className="font-semibold mb-4 text-3xl">Easy Cancel</h4>
         <p className="text-sm text-body-text">
-          Satın aldığınız otobüs biletlerinizi tek butona tıklayarak herhangi
-          bir ücret kesintisine maruz kalmadan, koşulsuz iade edebilirsiniz.
+          As Bticket, we have gathered exclusive carriers for you. You can
+          compare the bus tickets of all companies on obilet, find the
+          appropriate bus ticket, and purchase it online.
         </p>
       </div>
 
@@ -96,8 +97,9 @@ function Futures() {
 
         <h4 className="font-semibold mb-4 text-3xl">Difrent Trip</h4>
         <p className="text-sm text-body-text">
-          Satın aldığınız otobüs biletlerinizi tek butona tıklayarak herhangi
-          bir ücret kesintisine maruz kalmadan, koşulsuz iade edebilirsiniz.
+          Bticket offers you the opportunity to search and compare bus tickets
+          of all companies. By this means, you can easily find and buy bus
+          tickets that fit your budget.
         </p>
       </div>
       <div className="bg-white py-4 px-6 rounded-lg text-center">
@@ -135,8 +137,8 @@ function Futures() {
         </svg>
         <h4 className="font-semibold mb-4 text-3xl">Safe Pay</h4>
         <p className="text-sm text-body-text">
-          Satın aldığınız otobüs biletlerinizi tek butona tıklayarak herhangi
-          bir ücret kesintisine maruz kalmadan, koşulsuz iade edebilirsiniz.
+          You can make all your bus ticket purchases easily, quickly, and
+          reliably from your home, office, or with your mobile phone.
         </p>
       </div>
     </div>

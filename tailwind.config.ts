@@ -15,12 +15,12 @@ const config: Config = {
       colors: {
         "main-bg": "#eae7dc",
         "light-bg": "rgb(244 241 237)",
-        // "light-bg": "#D8C3A5",
         primary: "#e85a4f",
         secondary: "#E98074",
         "body-text": "#8E8D8A",
         "main-text": "#3e3e3e",
         "heading-text": "#373a3c",
+        "blue-light": "#6246E5",
       },
       fontFamily: {
         "Poetsen-One": "Poetsen-One",

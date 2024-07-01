@@ -1,16 +1,17 @@
 import Footer from "@/components/Modules/Footer";
 import Futures from "@/components/Modules/Futures";
 import MainSearch from "@/components/Modules/MainSearch";
+import HeroSection from "@/components/Templates/Main/HeroSection";
 import ReviewSlider from "@/components/Templates/Main/ReviewSlider";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div className=" overflow-hidden">
+      <HeroSection />
       <div className="bg-[url(/img/baner.jpg)] bg-cover bg-bottom md:-mt-24">
-        <div className=" bg-[rgba(100,43,40,0.75)] pt-8 pb-16">
+        <div className="  pt-8 pb-16">
           <div className="container md:pt-32">
-            <MainSearch />
             <div className="grid lg:grid-cols-2 gap-10 lg:py-20">
               <div></div>
               <div className="text-white mt-10 max-w-[500px]">
@@ -19,10 +20,10 @@ export default function Home() {
                     We Are Best Bus Charter Service In The World
                   </h3>
                   <p className="text-sm md:text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip
+                    Our customer service team is ready to support you 24/7 for
+                    all transactions you make through obilet.com and obilet
+                    Mobile Applications. You can start Live Support with one
+                    click and get help.
                   </p>
                   <div className="mt-6 flex gap-3 md:gap-4 text-sm md:text-base">
                     <button className="py-2.5 px-6 md:px-10 rounded-full bg-primary hover:bg-secondary font-semibold hover:-translate-y-2 transition-all duration-300">
@@ -86,33 +87,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-main-bg my-12">
-        <div className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-16">
-          <div>
-            <h3 className="text-3xl font-bold mb-6">
-              What our customers are saying us?
-            </h3>
-            <p className="text-body-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu
-              enim justo.
-            </p>
-            <div className="mt-8 flex gap-32">
-              <div>
-                <h5 className="text-2xl font-bold">13m+</h5>
-                <p className="text-body-text">Happy People</p>
-              </div>
-              <div>
-                <h5 className="text-2xl font-bold">4.88</h5>
-                <p className="text-body-text">Overall rating</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <ReviewSlider />
-          </div>
-        </div>
-      </div>
+
       <div className="container">
         <h3 className="text-4xl mb-4 font-Poetsen-One">Recommended</h3>
         <p className="mb-8">Interdum et malesuada fames ac ante ipsum</p>
@@ -236,6 +211,33 @@ export default function Home() {
               </span>
               <span className="font-medium mr-1 text-primary">$145</span>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-main-bg my-12">
+        <div className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div>
+            <h3 className="text-3xl font-bold mb-6">
+              What our customers are saying us?
+            </h3>
+            <p className="text-body-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+              varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu
+              enim justo.
+            </p>
+            <div className="mt-8 flex gap-32">
+              <div>
+                <h5 className="text-2xl font-bold">13m+</h5>
+                <p className="text-body-text">Happy People</p>
+              </div>
+              <div>
+                <h5 className="text-2xl font-bold">4.88</h5>
+                <p className="text-body-text">Overall rating</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ReviewSlider />
           </div>
         </div>
       </div>

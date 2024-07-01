@@ -4,18 +4,20 @@ import { signupValidationSchema } from "@/validations/client";
 import { Field, Form, Formik } from "formik";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { emit } from "process";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 function Signup() {
   const [type, setType] = useState("password");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const registerUser = async (formValues: {
     email: string;
     password: string;
   }) => {
+    if (loading) return false;
     try {
+      setLoading(true);
       const res = await fetch("/api/auth/register", {
         method: "POST",
         body: JSON.stringify({
@@ -23,9 +25,9 @@ function Signup() {
           password: formValues.password,
         }),
       });
-      console.log(res);
+      const data = await res.json();
+
       if (res.status === 201) {
-        const data = await res.json();
         Swal.fire({
           icon: "success",
           text: "Sign up completed please verify your email",
@@ -34,11 +36,16 @@ function Signup() {
       } else {
         Swal.fire({
           icon: "error",
-          text: "code is wrong ,try again",
+          text: data.error,
         });
       }
+      setLoading(false);
     } catch (error) {
       console.log("register catch error", error);
+      Swal.fire({
+        icon: "error",
+        text: "catch error ,try again",
+      });
     }
   };
   return (

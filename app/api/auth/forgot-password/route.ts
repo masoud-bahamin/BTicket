@@ -22,9 +22,15 @@ export async function POST(req: NextRequest) {
     if (user) {
       return NextResponse.json({ result: true, link }, { status: 200 });
     } else {
-      return NextResponse.json({ result: false }, { status: 401 });
+      return NextResponse.json(
+        { result: false, error: "This email is Not found" },
+        { status: 401 }
+      );
     }
   } catch (error) {
-    return NextResponse.json({ result: false }, { status: 500 });
+    return NextResponse.json(
+      { result: false, error: "catch error, server error" },
+      { status: 500 }
+    );
   }
 }

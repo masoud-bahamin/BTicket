@@ -13,8 +13,14 @@ export async function POST(req: NextRequest) {
     const validatinBody = registerValidation({ email, password });
     if (validatinBody !== true)
       return NextResponse.json(
-        { result: false, validatinBody },
+        { result: false, validatinBody, error: "valodition error" },
         { status: 400 }
+      );
+    const oldEmail = await users.findOne({ email });
+    if (oldEmail)
+      return NextResponse.json(
+        { result: false, error: "This email is already exist" },
+        { status: 403 }
       );
     const hashedPass = await hashPassword(password);
     const verifyEmailCode = Math.floor(Math.random() * 9999);
@@ -37,6 +43,9 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json({ result: true, token }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ result: false }, { status: 500 });
+    return NextResponse.json(
+      { result: false, error: "catch error , server error" },
+      { status: 500 }
+    );
   }
 }

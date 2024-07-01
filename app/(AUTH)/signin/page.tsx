@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 function Signin() {
   const [type, setType] = useState("password");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const loginUser = async ({
     email,
@@ -16,26 +17,38 @@ function Signin() {
     email: string;
     password: string;
   }) => {
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify({ email: email.toLowerCase(), password }),
-    });
-    console.log(res);
-
-    if (res.status === 200) {
-      router.push("/dashboard");
-      Swal.fire({
-        icon: "success",
-        text: "your login was successfull",
+    if (loading) return false;
+    try {
+      setLoading(true);
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email: email.toLowerCase(), password }),
       });
-    } else {
-      const data = await res.json();
+
+      if (res.status === 200) {
+        router.push("/dashboard");
+        Swal.fire({
+          icon: "success",
+          text: "your login was successfull",
+        });
+      } else {
+        const data = await res.json();
+        Swal.fire({
+          icon: "error",
+          title: "Try again",
+          text: data.message || "",
+        });
+      }
+    } catch (error) {
+      console.log("error in form login catch ");
       Swal.fire({
         icon: "error",
         title: "Try again",
-        text: data.message || "",
+        text: "catch error",
       });
     }
+
+    setLoading(false);
   };
   return (
     <div className="flex justify-center items-center min-h-[80vh]">
@@ -135,7 +148,7 @@ function Signin() {
               type="submit"
               className="bg-white text-gray-800 rounded-full p-3 w-full font-semibold mb-10 hover:bg-gray-200"
             >
-              SIGN IN
+              {loading ? "SUBMITING..." : "SIGN IN"}
             </button>
             <div className="flex justify-between">
               <Link

@@ -13,10 +13,10 @@ function MainSearch() {
         e.preventDefault();
         router.push(`/search/${from || "location"}/${to || "location"}`);
       }}
-      className="mx-auto p-5 rounded-lg bg-main-bg flex flex-wrap lg:flex-nowrap gap-5 w-fit text-sm md:text-base"
+      className="mx-auto p-5 rounded-lg bg-main-bg flex justify-between flex-wrap md:flex-nowrap gap-x-2 gap-y-5 w-fit text-sm md:text-base"
     >
-      <div className="flex flex-wrap md:flex-nowrap items-center gap-2">
-        <div className="px-4 py-2 rounded-lg min-w-72 bg-light-bg">
+      <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
+        <div className="px-4 py-2 rounded-lg w-64 sm:w-48 bg-light-bg">
           <label className="block text-sm" htmlFor="">
             From
           </label>
@@ -28,7 +28,7 @@ function MainSearch() {
             onChange={(e) => setFrom(e.target.value)}
           />
         </div>
-        <div className="border rounded-full border-body-text p-1.5 md:p-2.5 bg-white md:z-10 -ml-4 -mr-4 cursor-pointer">
+        <div className="border rounded-full border-body-text p-1.5 md:p-2.5 bg-white sm:z-10 -ml-4 -mr-4 cursor-pointer">
           <svg
             fill="currentColor"
             viewBox="0 0 16 16"
@@ -42,7 +42,7 @@ function MainSearch() {
             />
           </svg>
         </div>
-        <div className="px-4 py-2 rounded-lg min-w-72 bg-light-bg">
+        <div className="px-4 py-2 rounded-lg w-64 sm:w-48 bg-light-bg">
           <label className="block text-sm" htmlFor="">
             To
           </label>
