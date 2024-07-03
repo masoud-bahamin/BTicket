@@ -63,7 +63,7 @@ function Navbar({ email }: { email: boolean }) {
             <span className="font-semibold">Flight</span>
           </Link>
           <Link
-            href={"/"}
+            href={"/cars"}
             className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg
@@ -80,7 +80,7 @@ function Navbar({ email }: { email: boolean }) {
             <span className="font-semibold">Car</span>
           </Link>
           <Link
-            href={"/"}
+            href={"/stays"}
             className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg fill="none" viewBox="0 0 15 15" height="1em" width="1em">

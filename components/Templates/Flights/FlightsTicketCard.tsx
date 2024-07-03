@@ -6,7 +6,7 @@ export default function FlightsTicketCard() {
     <div className="rounded-lg border flex flex-wrap md:flex-nowrap justify-between gap-5 w-full">
       <div className="flex flex-col md:flex-row text-center w-full items-center justify-between gap-5 md-gap-x-12 xl:gap-20 p-5">
         <div>
-          <Image src={"/img/b1.png"} alt="" width={120} height={100} />
+          <Image src={"/img/fli.png"} alt="" width={120} height={100} />
         </div>
         <div>
           <p className="text-body-text font-semibold">From</p>
