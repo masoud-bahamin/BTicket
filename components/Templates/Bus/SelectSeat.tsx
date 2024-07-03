@@ -1,5 +1,8 @@
 "use client";
 
+import { BusTicketType } from "@/app/buses/page";
+import { TicketType } from "@/app/dashboard/page";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 type seatType = {
@@ -11,6 +14,8 @@ type seatType = {
 
 function SelectedSeat({ id, userId }: { id: string; userId: string }) {
   const [seats, setSeats] = useState<null | seatType[]>(null);
+  const [loading, setLoading] = useState(true);
+  const [ticketInfo, setTicketInfo] = useState<BusTicketType | null>(null);
   const [selectedSeats, setSelectedSeats] = useState<number[]>([]);
 
   const makeSeats = (num: number, seatArray: { seat: number[] }[]) => {
@@ -47,16 +52,19 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
   };
 
   const getTicketInfo = async () => {
+    setLoading(true);
     try {
       const res = await fetch(`/api/reserved/${id}`);
       if (res.status === 200) {
         const data = await res.json();
+        setTicketInfo(data.ticketInfo);
         const arr = makeSeats(28, data.reservedSeats);
         setSeats(arr);
       }
     } catch (error) {
       console.log("catch ticket page");
     }
+    setLoading(false);
   };
 
   const reservedTicket = async (seat: number[]) => {
@@ -76,8 +84,68 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
     getTicketInfo();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="fixed top-0 left-0 bg-[rgba(100,100,100,.5)] w-screen h-screen flex justify-center items-center">
+        <Image
+          width={200}
+          height={200}
+          alt="bus"
+          src={"/img/loading-bus.gif"}
+        />
+      </div>
+    );
+  }
+  if (!ticketInfo) {
+    return <div>data was not found...</div>;
+  }
+
   return (
     <div className="container px-0">
+      <>
+        <div className="bg-white flex flex-wrap gap-5 justify-between shadow-md p-5 rounded-t-lg border-b">
+          <div>
+            <img
+              className="w-24 md:w-32"
+              width={150}
+              src="https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/4889-sm.png"
+              alt=""
+            />
+          </div>
+          <div className="text-center">
+            <p className="flex gap-1 items-center justify-center">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1.4em"
+                width="1.4em"
+              >
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z" />
+                <path d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z" />
+              </svg>
+              <span className="font-semibold">{ticketInfo.time}</span>
+            </p>
+            <p>(4 Hour 30 Min)</p>
+          </div>
+          <div className="text-center">
+            <div className="flex items-center justify-center">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                height="1.4em"
+                width="1.4em"
+              >
+                <path d="M7 18S4 10 4 6s2-4 2-4h1s1 0 1 1-1 1-1 3 3 4 3 7-3 5-3 5m5-1c-1 0-4 2.5-4 2.5-.3.2-.2.5 0 .8 0 0 1 1.8 3 1.8h6c1.1 0 2-.9 2-2v-1c0-1.1-.9-2-2-2h-5z" />
+              </svg>
+              <span className="font-semibold">{ticketInfo.seatType}</span>
+            </div>
+            <p>
+              {ticketInfo.from} - {ticketInfo.to}
+            </p>
+          </div>
+          <p className="font-semibold">{ticketInfo.price} $</p>
+        </div>
+      </>
       <div className="flex flex-wrap justify-between py-12 rounded-lg gap-5 lg:gap-10 bg-white">
         <div className=" flex flex-wrap p-4 border rounded-t-2xl w-[290px]">
           <div className="w-full flex justify-between">
@@ -253,7 +321,9 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
               ) : null;
             })}
           </div>
-          <div className=" mb-8 font-semibold">Total Fee: 360 $</div>
+          <div className=" mb-8 font-semibold">
+            Total Fee: {selectedSeats.length * ticketInfo.price} $
+          </div>
           <div className="flex flex-wrap w-full">
             <button
               className="mt-8 bg-body-text hover:bg-main-text text-white py-1.5 px-10 rounded-lg"

@@ -49,7 +49,7 @@ function Navbar({ email }: { email: boolean }) {
             <span className="font-semibold">Bus</span>
           </Link>
           <Link
-            href={"/"}
+            href={"/flights"}
             className="flex gap-2 items-center py-2 md:px-8 border-gray-300 rounded-full hover:border-main-text hover:text-primary"
           >
             <svg

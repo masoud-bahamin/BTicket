@@ -1,3 +1,4 @@
+import BreadCrumb from "@/components/Modules/BreadCrumb";
 import BusTicket from "@/components/Modules/BusTicket";
 import SearchSection from "@/components/Modules/SearchSection";
 
@@ -19,6 +20,11 @@ export interface BusTicketType {
   };
 }
 
+export const metadata = {
+  title: "bus tickets",
+  description: "its bus ticket description",
+};
+
 async function Bus() {
   connectToDb();
   const busTickets: BusTicketType[] = await buses
@@ -28,6 +34,7 @@ async function Bus() {
 
   return (
     <div className="bg-main-bg">
+      <BreadCrumb title="Bus search results" />
       <div className="bg-body-text">
         <SearchSection from="Type" to="Type" />
       </div>
