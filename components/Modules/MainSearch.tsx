@@ -62,13 +62,13 @@ function MainSearch() {
       <div className="px-4 py-2 rounded-lg flex flex-col justify-center gap-2">
         <div className="flex items-center">
           <input type="radio" name="date" id="date" />
-          <label className="ml-1 text-sm" htmlFor="">
+          <label className="ml-1 text-sm" htmlFor="date">
             Today
           </label>
         </div>
         <div className="flex items-center">
-          <input type="radio" name="date" id="date" />
-          <label className="ml-1 text-sm" htmlFor="">
+          <input type="radio" name="date11" id="date11" />
+          <label className="ml-1 text-sm" htmlFor="date11">
             Tomarow
           </label>
         </div>

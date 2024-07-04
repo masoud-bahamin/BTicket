@@ -9,7 +9,15 @@ export default function Home() {
   return (
     <div className=" overflow-hidden">
       <HeroSection />
-      <div className="bg-[url(/img/baner.jpg)] bg-cover bg-bottom md:-mt-24">
+      <div className=" relative md:-mt-24">
+        <Image
+          className="-z-10"
+          objectFit="cover"
+          layout="fill"
+          objectPosition="center"
+          src={"/img/baner.jpg"}
+          alt="bahamin bus"
+        />
         <div className="  pt-8 pb-16">
           <div className="container md:pt-32">
             <div className="grid lg:grid-cols-2 gap-10 lg:py-20">
@@ -41,6 +49,7 @@ export default function Home() {
                           d="M15 12.33l-6 4.33V8l6 4.33z"
                         />
                       </svg>
+                      <span className=" sr-only">play</span>
                     </button>
                     <button className="font-semibold text-white hover:text-primary">
                       Watch Video
@@ -227,11 +236,11 @@ export default function Home() {
             </p>
             <div className="mt-8 flex gap-32">
               <div>
-                <h5 className="text-2xl font-bold">13m+</h5>
+                <p className="text-2xl font-bold">13m+</p>
                 <p className="text-body-text">Happy People</p>
               </div>
               <div>
-                <h5 className="text-2xl font-bold">4.88</h5>
+                <p className="text-2xl font-bold">4.88</p>
                 <p className="text-body-text">Overall rating</p>
               </div>
             </div>
