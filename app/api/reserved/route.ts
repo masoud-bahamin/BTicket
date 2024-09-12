@@ -1,14 +1,22 @@
 import { connectToDb } from "@/utils/connectToDb";
 import { reserved } from "@/models/reserved";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { verifyToken } from "@/utils/jwt";
+import { users } from "@/models/user";
 
 export async function POST(req: NextRequest) {
   try {
-    const { seat, userId, busId } = await req.json();
+    const Cookies = cookies()
+    const tokenUser = Cookies.get("user-token")
+    if(!tokenUser) return  NextResponse.json({ result: false , msg:"unauthorize" }, { status: 401 });
+    const email = verifyToken(tokenUser?.value)
     connectToDb();
+    const user = await users.findOne({email})
+    const { seat,  busId } = await req.json();
     const reservedTicket = await reserved.create({
       seat,
-      userId,
+      userId:user.id,
       busId,
     });
 

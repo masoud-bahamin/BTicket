@@ -1,7 +1,6 @@
 "use client";
 
 import { BusTicketType } from "@/app/buses/page";
-import { TicketType } from "@/app/dashboard/page";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -13,7 +12,7 @@ type seatType = {
   isSubmited: boolean;
 };
 
-function SelectedSeat({ id, userId }: { id: string; userId: string }) {
+function SelectedSeat({ id }: { id: string }) {
   const [seats, setSeats] = useState<null | seatType[]>(null);
   const [loading, setLoading] = useState(true);
   const [ticketInfo, setTicketInfo] = useState<BusTicketType | null>(null);
@@ -35,6 +34,7 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
     }
     return array;
   };
+
   const selectHandler = (item: seatType) => {
     if (item.isSubmited) return false;
     if (!seats) return false;
@@ -75,10 +75,9 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
         method: "POST",
         body: JSON.stringify({
           seat,
-          userId,
           busId: id,
         }),
-      });
+      });   
       setLoading(false);
       if (res.status === 201) {
         Swal.fire({
