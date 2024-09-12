@@ -4,9 +4,11 @@ import { cookies } from "next/headers";
 export async function middleware(req: NextRequest) {
   try {
     const myCookis = cookies();
-    if (myCookis.get("user-token")) {
+    
+    if (myCookis.get("user-token") || req.nextUrl.pathname ==="/buses") {
       return NextResponse.next();
     } else {
+      
       return NextResponse.redirect(new URL("/signup", req.url));
     }
   } catch (error) {
@@ -15,5 +17,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard", "/verify-email"],
+  matcher: ["/dashboard", "/verify-email " , "/buses/:path"],
 };
