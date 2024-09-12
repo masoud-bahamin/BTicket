@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const Cookies = cookies()
     const tokenUser = Cookies.get("user-token")
-    if(!tokenUser) return  NextResponse.json({ result: false , msg:"unauthorize" }, { status: 401 });
+    if(!tokenUser?.value) return  NextResponse.json({ result: false , msg:"unauthorize" }, { status: 401 });
     const email = verifyToken(tokenUser?.value)
     connectToDb();
     const user = await users.findOne({email})

@@ -13,22 +13,28 @@ export interface UserType {
 }
 
 export const getUserInfo = async () => {
-  const myCookies = cookies();
-  const token = myCookies.get("user-token");
+  try {
+    const myCookies = cookies();
+    const token = myCookies.get("user-token");
 
-  if (!token?.value) {
-    return null;
+    if (!token?.value) {
+      return null;
+    }
+
+    connectToDb();
+    const email = verifyToken(token.value);
+    if (!email) {
+      return null;
+    }
+    const user: UserType | null = await users
+      .findOne({ email })
+      .populate("tickets")
+      .lean();
+    if (!user) return null;
+    return user;
+  } catch (error) {
+    console.log("catch error in getUserInfo function");
+    return null
   }
 
-  connectToDb();
-  const email = verifyToken(token.value);
-  if (!email) {
-    return null;
-  }
-  const user: UserType | null = await users
-    .findOne({ email })
-    .populate("tickets")
-    .lean();
-  if (!user) return null;
-  return user;
 };
