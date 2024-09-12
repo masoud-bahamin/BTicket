@@ -1,5 +1,4 @@
 import { cookies } from "next/headers";
-import Swal from "sweetalert2";
 import { connectToDb } from "./connectToDb";
 import { verifyToken } from "./jwt";
 import { users } from "@/models/user";
@@ -15,23 +14,21 @@ export interface UserType {
 
 export const getUserInfo = async () => {
   const myCookies = cookies();
-  const token = myCookies.get("user-token")?.value;
+  const token = myCookies.get("user-token");
 
-  if (!token) {
-    Swal.fire({
-      icon: "warning",
-      text: "plaese sign in",
-    });
-
-    return;
+  if (!token?.value) {
+    return null;
   }
 
   connectToDb();
-  const email = verifyToken(token);
+  const email = verifyToken(token.value);
+  if (!email) {
+    return null;
+  }
   const user: UserType | null = await users
     .findOne({ email })
     .populate("tickets")
     .lean();
-  if (!user) return;
+  if (!user) return null;
   return user;
 };
