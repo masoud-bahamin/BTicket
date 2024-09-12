@@ -34,6 +34,13 @@ async function Bus() {
     .populate("reserved")
     .lean();
 
+  const minPrice = busTickets.reduce((prev, curr) => {
+    return prev < curr.price ? prev : curr.price;
+  }, 999999999);
+  const maxPrice = busTickets.reduce((prev, curr) => {
+    return prev > curr.price ? prev : curr.price;
+  }, 0);
+
   return (
     <div className="bg-main-bg">
       <BreadCrumb title="Bus search results" />
@@ -43,7 +50,7 @@ async function Bus() {
       <div className="container py-12">
         <div className="text-center">
           <h3 className="text-center font-bold font-Poetsen-One w-fit mx-auto text-4xl pb-5 border-b border-b-primary mb-10">
-            35 buses found
+            {busTickets.length || 25} buses found
           </h3>
         </div>
         <div className="flex flex-wrap lg:flex-nowrap gap-5 xl:gap-8">
@@ -53,7 +60,7 @@ async function Bus() {
               <h4 className="pb-3 mb-2 border-b font-semibold">
                 Filter by price
               </h4>
-              <PriceRangeSlider />
+              <PriceRangeSlider min={minPrice} max={maxPrice} />
               <button className="text-primary font-medium">Apply</button>
             </div>
             <div className="min-w-80 bg-white p-5 rounded-lg border xl:mb-8">
@@ -61,21 +68,21 @@ async function Bus() {
                 Number of stops
               </h4>
               <div>
-                <CheckboxFilterSection text="1 stop" count={16} />
-                <CheckboxFilterSection text="2 stop" count={10} />
-                <CheckboxFilterSection text="3 stop" count={7} />
-                <CheckboxFilterSection text="Non-stop" count={11} />
+                <CheckboxFilterSection text="All" count={busTickets.length} />
+                <CheckboxFilterSection text="2+2" count={21} />
+                <CheckboxFilterSection text="2+1" count={15} />
+                <CheckboxFilterSection text="VIP" count={6} />
               </div>
             </div>
             <div className="min-w-80 bg-white p-5 rounded-lg border xl:mb-8">
-              <h4 className="pb-3 mb-2 border-b font-semibold">Flight class</h4>
+              <h4 className="pb-3 mb-2 border-b font-semibold">Bus class</h4>
               <div>
-                <CheckboxFilterSection text="Economy" count={25} />
-                <CheckboxFilterSection text="Business" count={8} />
+                <CheckboxFilterSection text="Economy" count={18} />
+                <CheckboxFilterSection text="Business" count={9} />
               </div>
             </div>
             <div className="min-w-80 bg-white p-5 rounded-lg border xl:mb-8">
-              <h4 className="pb-3 mb-2 border-b font-semibold">Airlines</h4>
+              <h4 className="pb-3 mb-2 border-b font-semibold">Componies</h4>
               <div>
                 <CheckboxFilterSection text="Quatar Airways" count={5} />
                 <CheckboxFilterSection text="Fly Amirates" count={8} />
@@ -88,7 +95,7 @@ async function Bus() {
             {/* aside */}
           </div>
           <div className="w-full">
-            {busTickets.map((ticket) => (
+            {busTickets.reverse().map((ticket) => (
               <BusTicket key={ticket._id} {...ticket} />
             ))}
           </div>

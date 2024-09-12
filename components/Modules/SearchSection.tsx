@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 function SearchSection({
   from: fromProps,
@@ -16,6 +17,13 @@ function SearchSection({
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        if (from.length < 2 || to.length < 2) {
+          Swal.fire({
+            icon: "error",
+            text: "please select a valid city",
+          });
+          return;
+        }
         router.push(`/search/${from || "location"}/${to || "location"}`);
       }}
       className="mx-auto p-5 rounded-md flex flex-wrap gap-2 md:gap-5 w-fit"

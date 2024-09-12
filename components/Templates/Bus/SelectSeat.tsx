@@ -4,6 +4,7 @@ import { BusTicketType } from "@/app/buses/page";
 import { TicketType } from "@/app/dashboard/page";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 type seatType = {
   id: number;
@@ -68,14 +69,32 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
   };
 
   const reservedTicket = async (seat: number[]) => {
-    const res = await fetch(`/api/reserved`, {
-      method: "POST",
-      body: JSON.stringify({
-        seat,
-        userId,
-        busId: id,
-      }),
-    });
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/reserved`, {
+        method: "POST",
+        body: JSON.stringify({
+          seat,
+          userId,
+          busId: id,
+        }),
+      });
+      setLoading(false);
+      if (res.status === 201) {
+        Swal.fire({
+          icon: "success",
+          text: "Your tickets are reserved",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: "There is an error, please try again",
+        });
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log("catch error", error);
+    }
 
     getTicketInfo();
   };
@@ -105,10 +124,11 @@ function SelectedSeat({ id, userId }: { id: string; userId: string }) {
       <>
         <div className="bg-white flex flex-wrap gap-5 justify-between shadow-md p-5 rounded-t-lg border-b">
           <div>
-            <img
+            <Image
+              height={100}
               className="w-24 md:w-32"
               width={150}
-              src="https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/4889-sm.png"
+              src="/img/b1.png"
               alt=""
             />
           </div>

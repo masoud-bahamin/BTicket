@@ -24,7 +24,7 @@ export default async function page() {
               <h4 className="pb-3 mb-2 border-b font-semibold">
                 Filter by price
               </h4>
-              <PriceRangeSlider />
+              <PriceRangeSlider min={200} max={800}/>
               <button className="text-primary font-medium">Apply</button>
             </div>
             <div className="min-w-80 p-5 rounded-lg border xl:mb-8">

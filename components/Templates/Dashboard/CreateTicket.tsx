@@ -1,21 +1,36 @@
 "use client";
 
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 function CreateTicket() {
   const createTicket = async () => {
-    const res = await fetch("/api/bus/ticket", {
-      method: "POST",
-      body: JSON.stringify({
-        title: "VIP BUS",
-        time: "21:00",
-        seatType: "2+1",
-        price: 680,
-        from: "ankara",
-        to: "izmir",
-      }),
-    });
-    console.log(res);
+    try {
+      const res = await fetch("/api/bus/ticket", {
+        method: "POST",
+        body: JSON.stringify({
+          title: "VIP BUS",
+          time: "13:00",
+          seatType: "2+1",
+          price: 490,
+          from: "ankara",
+          to: "izmir",
+        }),
+      });
+      if (res.status === 201) {
+        Swal.fire({
+          icon: "success",
+          text: "created successfully",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: "try again",
+        });
+      }
+    } catch (error) {
+      console.log("catch error", error);
+    }
   };
   const reservedTicket = async () => {
     const res = await fetch("/api/reserved", {
